@@ -8,11 +8,33 @@
 </head>
 <body>
 
+    <from>
+        <fieldset>
+            <legend>select your city</legend>
+            <select name="citySelection" id="citySelection">
+                    <option readonly>City</option>
+                    <option class="cityChoice" value="89">Toronto</option>
+                    <option class="cityChoice" value="827">Hong Kong</option>
+                    <option class="cityChoice" value="281">Los Angeles</option>
+                    <option class="cityChoice" value="280">New York</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>How would you like to sort your restaurants?</legend>
+
+            <label for="ratingOrCost"></label>
+            <input id="ratingOrCost" type="checkbox" value="true">
+
+            <label for="ascendOrDescend"></label>
+            <input id="ascendOrDescend" type="checkbox" value="true">
+        </fieldset>
+    </from>
+
 
 
     <!-- jQuery -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-    script
     <script src="scripts.js"></script>
 </body>
 </html>
