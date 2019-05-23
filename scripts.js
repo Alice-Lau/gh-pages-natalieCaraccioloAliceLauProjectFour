@@ -4,9 +4,29 @@ const $selectedCity = $('#citySelection');
 const $cuisine = $('#cuisine');
 const $submit = $('#submit');
 const $form = $('#form');
+const $userSelectionPage = $('.userSelectionPage');
+const $restaurantDisplay = $('#restaurantDisplay');
 
 
 
+let cycle = 0
+
+const background = [
+    
+]
+
+restaurantApp.backgroundLoop = function() {
+    
+}
+
+setInterval(function() {
+    if (cycle < 5) {
+        $userSelectionPage.css('background-image', 'background[]')
+        cycle += 1;
+    } else {
+        cycle = 0
+    }
+}, 5000)
 
 
 $form.on('submit', function(e) {
@@ -14,8 +34,6 @@ $form.on('submit', function(e) {
     console.log('form submitted')
 
     restaurantApp.getInput();
-  
-
 });
 
 
@@ -30,7 +48,43 @@ restaurantApp.getInput = function() {
     if(entityId !== entityId || cuisineType === undefined) {
         console.log('error message');
     } else {
-         restaurantApp.ajaxRequest(entityId, cuisineType);
+        restaurantApp.ajaxRequest(entityId, cuisineType);
+    }
+}
+
+restaurantApp.displayAjaxResult = function(result) {
+    const restaurantArray = result.restaurants;
+    // console.log(restaurantArray);
+
+    for (restaurantObj of restaurantArray) {
+
+        const restaurant = restaurantObj.restaurant;
+
+        const { name, location, cuisines, price_range, user_rating, featured_image } = restaurant;
+
+        const address = location.address;
+        const rating = user_rating.aggregate_rating;
+        
+        $restaurantDisplay.append(`
+            <div className="singleRestaurant">
+                <h2>${name}</h2>
+                <img src="${featured_image}" alt="A featured image of ${name}"/>
+                <h3>Cuisine Type</h3>
+                <p>${cuisines}</p>
+                <div className="ratingStat">
+                    <div className="userRating">
+                        <h3>Rating</h3>
+                        <p>${rating}/5</p>
+                    </div>
+                    <div className="priceRange">
+                        <h3>Price</h3>
+                        <p>${price_range}/5</p>
+                    </div>
+                </div>
+            </div>
+        `)
+
+
     }
 }
 
@@ -45,7 +99,7 @@ restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
         data: {
             count: 12,
             sort: 'rating',
-            order: desc,
+            order: 'desc',
             entity_id: entityId,
             cuisines: cuisinesType
 
@@ -53,30 +107,12 @@ restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
         beforeSend: function (xhr) {
             xhr.setRequestHeader("user-key", "b7d63a85e5a9127cf51fb71ccf4c92e6");
         },
-        success: function (result) {
-            const restaurantArray = result.restaurants;
-            // console.log(restaurantArray);
-
-            for (restaurantObj of restaurantArray) {
-
-                const restaurant = restaurantObj.restaurant;
-
-                const { name, location, cuisines, price_range, user_rating, featured_image } = restaurant;
-
-                const address = location.address;
-                const rating = user_rating.aggregate_rating;
-
-                console.log(
-                    `Restaurant Name: ${name},
-                    Cuisine Type: ${cuisines},
-                    Price range: ${price_range},
-                    Rating: ${rating}/5,
-                    Location: ${address},
-                    Thumbnail url: ${featured_image}`
-                );
-
-            }
+        success: function (ajaxResult) {
+            restaurantApp.displayAjaxResult(ajaxResult);
         },
+        error: function() {
+            alert('There seems to be an error in your input. Please double check.')
+        }
     });
 }
 

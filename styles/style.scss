@@ -1,0 +1,27 @@
+@import 'setup';
+
+html {
+    font-size: 125%;
+}
+
+.wrapper {
+    max-width: 1440px;
+}
+
+.userSelectionPage {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+input, select {
+    width: 100%;
+}
