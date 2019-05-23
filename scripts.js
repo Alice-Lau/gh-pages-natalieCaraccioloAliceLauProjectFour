@@ -1,23 +1,38 @@
 const restaurantApp = {}
 
 const $selectedCity = $('#citySelection');
+const $cuisine = $('#cuisine');
+const $submit = $('#submit');
+const $form = $('#form');
 
 
-$selectedCity.on('change', function() {
+
+
+
+$form.on('submit', function(e) {
+    e.preventDefault();
+    console.log('form submitted')
+
     restaurantApp.getInput();
-})
+  
+
+});
+
+
 
 restaurantApp.getInput = function() {
     const entityId = parseInt($selectedCity.val());
 
-    if(entityId === NaN) {
+    const cuisineType = $cuisine.val();
+
+    console.log(entityId, cuisineType);
+
+    if(entityId !== entityId || cuisineType === undefined) {
         console.log('error message');
     } else {
-        restaurant.ajaxRequest(entityId);
+         restaurantApp.ajaxRequest(entityId, cuisineType);
     }
 }
-
-
 
 
 
@@ -30,6 +45,7 @@ restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
         data: {
             count: 12,
             sort: 'rating',
+            order: desc,
             entity_id: entityId,
             cuisines: cuisinesType
 
@@ -41,9 +57,9 @@ restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
             const restaurantArray = result.restaurants;
             // console.log(restaurantArray);
 
-            for (restauranObj of restaurantArray) {
+            for (restaurantObj of restaurantArray) {
 
-                const restaurant = restauranObj.restaurant;
+                const restaurant = restaurantObj.restaurant;
 
                 const { name, location, cuisines, price_range, user_rating, featured_image } = restaurant;
 
