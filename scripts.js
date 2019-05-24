@@ -7,27 +7,7 @@ const $form = $('#form');
 const $userSelectionPage = $('.userSelectionPage');
 const $restaurantDisplay = $('#restaurantDisplay');
 
-
-
-let cycle = 0
-
-const background = [
-    
-]
-
-restaurantApp.backgroundLoop = function() {
-    
-}
-
-setInterval(function() {
-    if (cycle < 5) {
-        $userSelectionPage.css('background-image', 'background[]')
-        cycle += 1;
-    } else {
-        cycle = 0
-    }
-}, 5000)
-
+const resultArray = [];
 
 $form.on('submit', function(e) {
     e.preventDefault();
@@ -36,70 +16,55 @@ $form.on('submit', function(e) {
     restaurantApp.getInput();
 });
 
-
-
 restaurantApp.getInput = function() {
     const entityId = parseInt($selectedCity.val());
 
-    const cuisineType = parseInt($cuisine.val());
+    const cuisineId = parseInt($cuisine.val());
 
-    console.log(entityId, cuisineType);
+    console.log(entityId, cuisineId);
 
-    if(entityId !== entityId || cuisineType === undefined) {
+    if(entityId !== entityId || cuisineId === undefined) {
         console.log('error message');
     } else {
-        restaurantApp.ajaxRequest(entityId, cuisineType);
+        restaurantApp.ajaxRequest(entityId, cuisineId);
     }
 }
 
-restaurantApp.displayAjaxResult = function(result) {
-    const restaurantArray = result.restaurants;
-    // console.log(restaurantArray);
-
-    for (restaurantObj of restaurantArray) {
-
-        const restaurant = restaurantObj.restaurant;
-
-        const { name, location, cuisines, price_range, user_rating, featured_image } = restaurant;
-
-        const address = location.address;
-        const rating = user_rating.aggregate_rating;
+// restaurantApp.displayAjaxResult = function(result) {
+    
             
-        $restaurantDisplay.append(`
-            <div className="singleRestaurant">
-                <h2>${name}</h2>
-                <img src="${featured_image}" alt="A featured image of $ {name}"/>
-                <h3>Cuisine Type</h3>
-                <p>${cuisines}</p>
-                <div className="ratingStat">
-                    <div className="userRating">
-                        <h3>Rating</h3>
-                        <p>${rating}/5</p>
-                    </div>
-                    <div className="priceRange">
-                        <h3>Price</h3>
-                        <p>${price_range}/5</p>
-                    </div>
-                </div>
-            </div>
-        `)
-    }  
-}
-
+//         $restaurantDisplay.append(`
+//             <div class='singleRestaurant'>
+//                 <h2>${name}</h2>
+//                 <img src='${featured_image}' alt='A featured image of ${name}'/>
+//                 <h3>Cuisine Type</h3>
+//                 <p>${cuisines}</p>
+//                 <div class='ratingStat'>
+//                     <div class='userRating'>
+//                         <h3>Rating</h3>
+//                         <p>${rating}/5</p>
+//                     </div>
+//                     <div class='priceRange'>
+//                         <h3>Price</h3>
+//                         <p>${price_range}/5</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         `)
+// }
 
 
 // ajax call to zomato
-restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
+restaurantApp.ajaxRequest = function(entityId, cuisinesId) {
     $.ajax({
         url: "https://developers.zomato.com/api/v2.1/search?",
         type: "GET",
         dataType: "JSON",
         data: {
-            count: 12,
-            sort: 'rating',
-            order: 'desc',
+            // sort: 'rating',
+            // order: 'desc',
             entity_id: entityId,
-            cuisines: cuisinesType
+            cuisines: cuisinesId
 
         },
         beforeSend: function (xhr) {
@@ -107,12 +72,30 @@ restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
         },
         success: function (ajaxResult) {
             $restaurantDisplay.empty();
-            restaurantApp.displayAjaxResult(ajaxResult);
+            restaurantApp.filterResult(ajaxResult);
+            // restaurantApp.displayAjaxResult(ajaxResult);
         },
         error: function() {
             alert('There seems to be an error in your input. Please double check.')
         }
     });
+}
+
+
+restaurantApp.filterResult = function(ajaxResult) {
+
+    const restaurantArray = ajaxResult.restaurants;
+
+    for (restaurantObj of restaurantArray) {
+        const restaurant = restaurantObj.restaurant;
+        const image = restaurant.featured_image;
+
+        if (image) {
+            resultArray.push(restaurant);
+        }
+    }
+    
+    console.log(resultArray);   
 }
 
 
