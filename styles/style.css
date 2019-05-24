@@ -146,12 +146,24 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden; }
 
 html {
-  font-size: 125%; }
+  font-size: 125%;
+  font-family: Montserrat, sans-serif; }
+
+h1,
+h2,
+h3,
+p {
+  margin: 0; }
+
+img {
+  max-width: 100%;
+  width: 100%; }
 
 .wrapper {
   max-width: 1440px; }
 
 .userSelectionPage {
+  background: #e4decd;
   width: 100%;
   min-height: 100vh;
   display: -webkit-box;
@@ -168,9 +180,31 @@ html {
   -ms-flex-align: center;
   align-items: center; }
 
+.formBackground {
+  width: 80%;
+  min-height: 200px;
+  background: #acb7ae; }
+
 form {
   margin: 0 auto;
   width: 50%; }
 
 input, select {
   width: 100%; }
+
+.restaurantDisplay {
+  margin: 0 auto;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .restaurantDisplay div {
+    margin: 1px;
+    width: calc( 50% - 2px);
+    background: #acb7ae;
+    text-align: center; }
+    .restaurantDisplay div img {
+      width: 100%;
+      max-width: 100%; }

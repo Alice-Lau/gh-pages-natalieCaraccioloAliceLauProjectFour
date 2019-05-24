@@ -1,7 +1,25 @@
-@import 'setup';
+@import './partials/setup';
+
+$barelyGreen: rgb(172, 183, 174);
+$brownShirts: #82716e;
+$tanBlonde: #e4decd;
+$blondey: #c2b490;
 
 html {
     font-size: 125%;
+    font-family: Montserrat, sans-serif;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    width: 100%
 }
 
 .wrapper {
@@ -9,12 +27,19 @@ html {
 }
 
 .userSelectionPage {
+    background: $tanBlonde;
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.formBackground {
+    width: 80%;
+    min-height: 200px;
+    background:$barelyGreen;
 }
 
 form {
@@ -24,4 +49,23 @@ form {
 
 input, select {
     width: 100%;
+}
+
+.restaurantDisplay {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+        margin: 1px;
+        width: calc( 50% - 2px );
+        background: $barelyGreen;
+        text-align: center;
+
+        img {
+        width: 100%;
+        max-width: 100%;
+    }
+    }
 }

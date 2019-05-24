@@ -4,74 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/style.css">
     <title>Project 4</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- style sheet -->
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
     <div class="wrapper">
         <div class="userSelectionPage">
-            <form id="form">
-                <fieldset>
-                    <legend>select your city</legend>
-                    <select name="citySelection" id="citySelection">
-                        <span> class="visibilityHidden"> Choose your city here</span>
-                        <option readonly>City</option>
-                        <option class="cityChoice" value="89">Toronto</option>
-                        <option class="cityChoice" value="827">Hong Kong</option>
-                        <option class="cityChoice" value="281">Los Angeles</option>
-                        <option class="cityChoice" value="280">New York</option>
-                    </select>
-                </fieldset>
+            <h1>What's for dinner?</h1>
+            <p>Select the city you are in, your favourite type of cuisine, and we will give you some awesome restaurant options in your city.</p>
+            <div class="formBackground">
+                <form id="form">
+                
+                    <!-- grab 10 city_id -->
+                    <fieldset>
+                        <legend>select your city</legend>
+                        <label class="visuallyHidden" for="citySelection">select your city</label>
+                        <select name="citySelection" id="citySelection">
+                            <span> class="visibilityHidden"> Choose your city here</span>
+                            <option readonly>City</option>
+                            <option class="cityChoice" value="89">Toronto</option>
+                            <option class="cityChoice" value="827">Hong Kong</option>
+                            <option class="cityChoice" value="281">Los Angeles</option>
+                            <option class="cityChoice" value="280">New York</option>
+                        </select>
+                    </fieldset>
+                
+                    <!-- grab 10 cuisine_id -->
+                    <fieldset>
+                        <legend>select your idea cuisine type</legend>
+                        <label class="visuallyHidden" for="cuisine">select your idea cuisine type</label>
+                        <select name="" id="cuisine">
+                            <span> class="visibilityHidden"> Choose your ideal cuisine here </span>
+                            <option value="">Cuisine Type</option>
+                            <option value="1">American</option>
+                            <option value="3">Asian</option>
+                            <option value="152">African</option>
+                            <!-- <option value="Bakery">Bakery</option>
+                            <option value="Belgian">Belgian</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Caribbean">Caribbean</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Fusian">Fusian</option>
+                            <option value="First Nations">First Nations</option>
+                            <option value="Greek">Greek</option>
+                            <option value="Indian">Indian</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Israeli">Isrraeli</option>
+                            <option value="Mediterranean">Mediterranean</option>
+                            <option value="Mexican">Mexican</option>
+                            <option value="Persian">Persian</option>
+                            <option value="International">International</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Southern">Southern</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Swedish">Swedish</option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option> -->
+                        </select>
+                    </fieldset>
+                
+                    <!-- <fieldset>
+                        <legend>How would you like to sort your restaurants?</legend>
             
-                <fieldset>
-                    <label for="cuisine"></label>
-                    <select name="" id="cuisine">
-                        <span> class="visibilityHidden"> Choose your ideal cuisine here </span>
-                        <option value="">Cuisine Type</option>
-                        <option value="American">American</option>
-                        <option value="Asian">Asian</option>
-                        <option value="African">African</option>
-                        <!-- <option value="Bakery">Bakery</option>
-                                    <option value="Belgian">Belgian</option>
-                                    <option value="Breakfast">Breakfast</option>
-                                    <option value="Caribbean">Caribbean</option>
-                                    <option value="Dessert">Dessert</option>
-                                    <option value="Fusian">Fusian</option>
-                                    <option value="First Nations">First Nations</option>
-                                    <option value="Greek">Greek</option>
-                                    <option value="Indian">Indian</option>
-                                    <option value="Italian">Italian</option>
-                                    <option value="Israeli">Isrraeli</option>
-                                    <option value="Mediterranean">Mediterranean</option>
-                                    <option value="Mexican">Mexican</option>
-                                    <option value="Persian">Persian</option>
-                                    <option value="International">International</option>
-                                    <option value="Russian">Russian</option>
-                                    <option value="Southern">Southern</option>
-                                    <option value="Spanish">Spanish</option>
-                                    <option value="Swedish">Swedish</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option> -->
-                    </select>
-                </fieldset>
+                        <label for="ratingOrCost"></label>
+                        <input id="ratingOrCost" type="checkbox" value="true">
             
-                <!-- <fieldset>
-                                <legend>How would you like to sort your restaurants?</legend>
-                    
-                                <label for="ratingOrCost"></label>
-                                <input id="ratingOrCost" type="checkbox" value="true">
-                    
-                                <label for="ascendOrDescend"></label>
-                                <input id="ascendOrDescend" type="checkbox" value="true">
-                            </fieldset> -->
-            
-                <label for="submit"></label>
-                <input id="submit" type="submit" value="Find My Restaurant!">
-            </form>
+                        <label for="ascendOrDescend"></label>
+                        <input id="ascendOrDescend" type="checkbox" value="true">
+                    </fieldset> -->
+                
+                    <label for="submit"></label>
+                    <input id="submit" type="submit" value="Find My Restaurant!">
+                </form>
+            </div>
         </div>
 
         <div id="restaurantDisplay" class="restaurantDisplay">

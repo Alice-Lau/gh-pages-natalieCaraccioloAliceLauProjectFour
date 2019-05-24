@@ -41,7 +41,7 @@ $form.on('submit', function(e) {
 restaurantApp.getInput = function() {
     const entityId = parseInt($selectedCity.val());
 
-    const cuisineType = $cuisine.val();
+    const cuisineType = parseInt($cuisine.val());
 
     console.log(entityId, cuisineType);
 
@@ -64,11 +64,11 @@ restaurantApp.displayAjaxResult = function(result) {
 
         const address = location.address;
         const rating = user_rating.aggregate_rating;
-        
+            
         $restaurantDisplay.append(`
             <div className="singleRestaurant">
                 <h2>${name}</h2>
-                <img src="${featured_image}" alt="A featured image of ${name}"/>
+                <img src="${featured_image}" alt="A featured image of $ {name}"/>
                 <h3>Cuisine Type</h3>
                 <p>${cuisines}</p>
                 <div className="ratingStat">
@@ -83,9 +83,7 @@ restaurantApp.displayAjaxResult = function(result) {
                 </div>
             </div>
         `)
-
-
-    }
+    }  
 }
 
 
@@ -108,6 +106,7 @@ restaurantApp.ajaxRequest = function(entityId, cuisinesType) {
             xhr.setRequestHeader("user-key", "b7d63a85e5a9127cf51fb71ccf4c92e6");
         },
         success: function (ajaxResult) {
+            $restaurantDisplay.empty();
             restaurantApp.displayAjaxResult(ajaxResult);
         },
         error: function() {
