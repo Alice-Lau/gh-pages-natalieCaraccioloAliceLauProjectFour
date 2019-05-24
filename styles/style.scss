@@ -3,18 +3,43 @@
 $barelyGreen: rgb(172, 183, 174);
 $brownShirts: #82716e;
 $tanBlonde: #e4decd;
-$blondey: #c2b490;
+$yellow:  #F7B733;
 
 html {
     font-size: 125%;
-    font-family: Montserrat, sans-serif;
+    
 }
 
 h1,
 h2,
 h3,
 p {
-    margin: 0;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    color: $yellow;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #F7B733;
+    text-align: center;
+    font-size: 100px;
+    padding-bottom: 30px;
+}
+
+p {
+    font-size: 25px;
+    padding-bottom: 30px;
+
+}
+
+p,
+form,
+legend {
+    font-family: 'merriweather';
+   
 }
 
 img {
@@ -39,12 +64,29 @@ img {
 .formBackground {
     width: 80%;
     min-height: 200px;
-    background:$barelyGreen;
+    background: $yellow;
+    border-radius: 20px;
 }
 
 form {
     margin: 0 auto;
-    width: 50%;
+    width: 70%;  
+    padding: 20px 0;
+}
+
+.input, 
+select, 
+fieldset {
+    border: none;
+    margin: 15px 0;
+    padding: 5px;
+}
+
+#submit {
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    
 }
 
 input, select {
@@ -53,19 +95,22 @@ input, select {
 
 .restaurantDisplay {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    background: $tanBlonde;
 
     div {
         margin: 1px;
-        width: calc( 50% - 2px );
-        background: $barelyGreen;
-        text-align: center;
+        width: 40%;
+        background: white;
+        margin: 0 auto;
 
         img {
         width: 100%;
         max-width: 100%;
     }
+
+
     }
 }
