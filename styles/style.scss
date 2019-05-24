@@ -17,13 +17,13 @@ p {
     text-align: center;
     margin: 0 auto;
     width: 80%;
-    color: $yellow;
+    color: navy;
 }
 
 h1 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    color:#FC4A1A;
+    color: navy;
     text-align: center;
     font-size: 100px;
     padding-bottom: 30px;
@@ -32,6 +32,7 @@ h1 {
 p {
     font-size: 25px;
     padding-bottom: 30px;
+    color: tomato;
 
 }
 
@@ -39,6 +40,7 @@ p,
 form,
 legend {
     font-family: 'merriweather';
+    margin: 0 auto;
    
 }
 
@@ -52,7 +54,7 @@ img {
 }
 
 .userSelectionPage {
-    background: $tanBlonde;
+    background: #efefff;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -64,7 +66,7 @@ img {
 .formBackground {
     width: 80%;
     min-height: 200px;
-    background: $red;
+    background: navy;
     border-radius: 20px;
 }
 
@@ -72,6 +74,7 @@ form {
     margin: 0 auto;
     width: 70%;  
     padding: 20px 0;
+    color: white;
 }
 
 .input, 
@@ -91,6 +94,9 @@ fieldset {
 
 input, select {
     width: 100%;
+    color: tomato;
+    text-align: center;
+    border-radius: 20px;
 }
 
 .restaurantDisplay {
