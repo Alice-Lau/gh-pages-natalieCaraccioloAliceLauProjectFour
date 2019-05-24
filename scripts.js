@@ -30,28 +30,35 @@ restaurantApp.getInput = function() {
     }
 }
 
-// restaurantApp.displayAjaxResult = function(result) {
+restaurantApp.displayAjaxResult = function(result) {
     
-            
-//         $restaurantDisplay.append(`
-//             <div class='singleRestaurant'>
-//                 <h2>${name}</h2>
-//                 <img src='${featured_image}' alt='A featured image of ${name}'/>
-//                 <h3>Cuisine Type</h3>
-//                 <p>${cuisines}</p>
-//                 <div class='ratingStat'>
-//                     <div class='userRating'>
-//                         <h3>Rating</h3>
-//                         <p>${rating}/5</p>
-//                     </div>
-//                     <div class='priceRange'>
-//                         <h3>Price</h3>
-//                         <p>${price_range}/5</p>
-//                     </div>
-//                 </div>
-//             </div>
-//         `)
-// }
+    for (item of result) {
+        console.log (item);
+
+        const { name, featured_image, cuisines, price_range, user_rating} = item;
+
+        const rating = user_rating.aggregate_rating;
+
+        $restaurantDisplay.append(`
+            <div class='singleRestaurant'>
+                <h2>${name}</h2>
+                <img src='${featured_image}' alt='A featured image of ${name}'/>
+                <h3>Cuisine Type</h3>
+                <p>${cuisines}</p>
+                <div class='ratingStat'>
+                    <div class='userRating'>
+                        <h3>Rating</h3>
+                        <p>${rating}/5</p>
+                    </div>
+                    <div class='priceRange'>
+                        <h3>Price</h3>
+                        <p>${price_range}/5</p>
+                    </div>
+                </div>
+            </div>
+        `)
+    }
+}
 
 
 // ajax call to zomato
@@ -95,7 +102,7 @@ restaurantApp.filterResult = function(ajaxResult) {
         }
     }
     
-    console.log(resultArray);   
+    restaurantApp.displayAjaxResult(resultArray);
 }
 
 
