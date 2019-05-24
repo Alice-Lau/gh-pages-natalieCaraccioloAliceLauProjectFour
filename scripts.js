@@ -9,12 +9,26 @@ const $restaurantDisplay = $('#restaurantDisplay');
 
 const resultArray = [];
 
+
+
 $form.on('submit', function(e) {
     e.preventDefault();
     console.log('form submitted')
 
+   
+
     restaurantApp.getInput();
+
+    $('html, body').animate({
+        scrollTop: $("#restaurantDisplay").offset().top
+    }, 4000);
+
+  
+   
 });
+
+
+
 
 restaurantApp.getInput = function() {
     const entityId = parseInt($selectedCity.val());
@@ -106,10 +120,21 @@ restaurantApp.filterResult = function(ajaxResult) {
 }
 
 
+// $("#submit").click(function() {
+//     console.log('hey')
+    
+//     $('html, body').animate({
+//            scrollTop: $("#restaurantDisplay").offset().top
+//        }, 2000);
+ 
+// });
+
+
+
 //doc ready
 $('document').ready(function() {
 
 
 
 
-})
+});

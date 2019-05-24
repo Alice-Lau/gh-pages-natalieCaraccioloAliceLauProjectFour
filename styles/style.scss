@@ -3,7 +3,7 @@
 $barelyGreen: rgb(172, 183, 174);
 $brownShirts: #82716e;
 $tanBlonde: #e4decd;
-$yellow:  #F7B733;
+$red:  #FC4A1A;
 
 html {
     font-size: 125%;
@@ -23,7 +23,7 @@ p {
 h1 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    color: #F7B733;
+    color:#FC4A1A;
     text-align: center;
     font-size: 100px;
     padding-bottom: 30px;
@@ -64,7 +64,7 @@ img {
 .formBackground {
     width: 80%;
     min-height: 200px;
-    background: $yellow;
+    background: $red;
     border-radius: 20px;
 }
 
