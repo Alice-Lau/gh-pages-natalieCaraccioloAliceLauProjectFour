@@ -9,14 +9,14 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <!-- style sheet -->
     <link rel="stylesheet" href="styles/style.css">
-<link href="https://fonts.googleapis.com/css?family=Merriweather:300%7CMontserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Pinyon+Script&display=swap" rel="stylesheet"> 
 </head>
 <body>
 
     <div class="wrapper">
-        <div class="userSelectionPage">
+        <div class="userSelectionPage" id="userSelectionPage">
             <h1>What's for dinner?</h1>
-            <p>Too many options in your city? We can help! Select the city you are in, then your favourite type of cuisine and we will give you some awesome restaurant options in your city.</p>
+            <p>Too many options? We can help! Select the city you are in, then your favourite type of cuisine and we will give you some awesome restaurant options in your city.</p>
             <div class="formBackground">
                 <form id="form">
                 
@@ -90,7 +90,7 @@
         <div id="restaurantDisplay" class="restaurantDisplay">
             <!-- where ajax call results are displayed -->
             <div class="reset-button">
-                <button id="reset" aria-label="Press to reset game.">
+                <button id="reset" class="reset" aria-label="Press to reset game.">
                     <p>Reset</p>
                 </button>
             </div>

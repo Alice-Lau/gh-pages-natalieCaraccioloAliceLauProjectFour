@@ -1,13 +1,30 @@
 @import './partials/setup';
 
-$barelyGreen: rgb(172, 183, 174);
-$brownShirts: #82716e;
+/* colors */
 $tanBlonde: #e4decd;
-$red:  #FC4A1A;
+$accent:  navy;
+
+
+/* fonts */
+
+$main: 'pinyon script';
+$body: 'montserrat';
+
 
 html {
-    font-size: 125%;
+    font-size: 140%;
     
+}
+
+.wrapper {
+    max-width: 1440px;
+}
+
+/* main font sizing and styles */
+
+
+h2 {
+    font-family: $main, sans-serif;
 }
 
 h1,
@@ -17,30 +34,33 @@ p {
     text-align: center;
     margin: 0 auto;
     width: 80%;
-    color: navy;
+
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    color: navy;
+    font-family: $main, sans-serif;
+    text-transform: lowercase;
+    // color: $accent;
     text-align: center;
-    font-size: 100px;
+    font-size: 125px;
     padding-bottom: 30px;
+    font-weight: 200;
 }
 
 p {
     font-size: 25px;
     padding-bottom: 30px;
-    color: tomato;
+    // color: $accent;
 
 }
 
 p,
 form,
 legend {
-    font-family: 'merriweather';
+    font-family: $body;
     margin: 0 auto;
+    color: black;
+    font-size: 25px;
    
 }
 
@@ -49,30 +69,43 @@ img {
     width: 100%
 }
 
-.wrapper {
-    max-width: 1440px;
-}
+/*backgoround image styles */
 
 .userSelectionPage {
-    background: #efefff;
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+
 }
+
+.userSelectionPage:after {
+    content: "";
+    background: url('../assets/background.jpg');
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 
 .formBackground {
     width: 80%;
-    min-height: 200px;
-    background: navy;
-    border-radius: 20px;
+    // min-height: 200px;
+    // background: navy;
+    // border-radius: 20px;
 }
+
+/* form styles */
 
 form {
     margin: 0 auto;
-    width: 70%;  
+    width: 80%;  
     padding: 20px 0;
     color: white;
 }
@@ -85,19 +118,25 @@ fieldset {
     padding: 5px;
 }
 
-#submit {
-    border-radius: 10px;
-    border: none;
-    padding: 5px;
-    
-}
+
 
 input, select {
     width: 100%;
-    color: tomato;
     text-align: center;
-    border-radius: 20px;
+   border-bottom: 2px solid black;
+   background: none;
 }
+
+#submit {
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    color: white;
+    background: black;
+    
+}
+
+/* result page styles  */
 
 .restaurantDisplay {
     margin: 0 auto;
@@ -120,3 +159,29 @@ input, select {
 
     }
 }
+
+.reset {
+    display: none;
+}
+
+.restaurantDisplay {
+    text-align: center;
+    background: url('../assets/background.jpg');
+    background-repeat: repeat;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: $body;
+    font-size: 25px;
+    border: 2px solid black;
+    padding: 0 20px;
+}
+
+h2,
+h3 {
+    font-family: cursive;
+    font-size: 30px;
+}
+
