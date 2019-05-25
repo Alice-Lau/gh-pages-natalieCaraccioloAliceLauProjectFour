@@ -27,8 +27,9 @@ restaurantApp.getInput = function() {
 
     console.log(entityId, cuisineId);
 
-    if(entityId !== entityId || cuisineId === undefined) {
-        console.log('error message');
+    if(entityId !== entityId || cuisineId !== cuisineId) {
+        alert('Please complete your choice inputs');
+        
     } else {
         restaurantApp.ajaxRequest(entityId, cuisineId);
     }
