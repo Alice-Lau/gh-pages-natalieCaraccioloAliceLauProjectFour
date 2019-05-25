@@ -14,94 +14,66 @@
 <body>
 
     <div class="wrapper">
-        <div class="userSelectionPage" id="userSelectionPage">
-            <h1>What's for dinner?</h1>
-            <p>Too many options? We can help! Select the city you are in, then your favourite type of cuisine and we will give you some awesome restaurant options in your city.</p>
-            <div class="formBackground">
-                <form id="form">
-                
-                    <!-- grab 10 city_id -->
-                    <fieldset>
-                        <legend>Select The City You're In:</legend>
-                        <label class="visuallyHidden" for="citySelection">Select The City You're In</label>
-                        <select name="citySelection" id="citySelection">
-                            <span> class="visibilityHidden">Select The City You're In</span>
-                            <option readonly>City</option>
-                            <option class="cityChoice" value="89">Toronto</option>
-                            <option class="cityChoice" value="827">Hong Kong</option>
-                            <option class="cityChoice" value="281">Los Angeles</option>
-                            <option class="cityChoice" value="280">New York</option>
-                        </select>
-                    </fieldset>
-                
-                    <!-- grab 10 cuisine_id -->
-                    <fieldset>
-                        <legend> Choose Your Ideal Cuisine Here:</legend>
-                        <label class="visuallyHidden" for="cuisine">Choose Your Ideal Cuisine Here </label>
-                        <select name="" id="cuisine">
-                            <span> class="visibilityHidden"> Choose Your Ideal Cuisine Here </span>
-                            <option value="">Cuisine Type</option>
-                            <option value="1">American</option>
-                            <option value="3">Asian</option>
-                            <option value="152">African</option>
-                            <!-- <option value="Bakery">Bakery</option>
-                            <option value="Belgian">Belgian</option>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Caribbean">Caribbean</option>
-                            <option value="Dessert">Dessert</option>
-                            <option value="Fusian">Fusian</option>
-                            <option value="First Nations">First Nations</option>
-                            <option value="Greek">Greek</option>
-                            <option value="Indian">Indian</option>
-                            <option value="Italian">Italian</option>
-                            <option value="Israeli">Isrraeli</option>
-                            <option value="Mediterranean">Mediterranean</option>
-                            <option value="Mexican">Mexican</option>
-                            <option value="Persian">Persian</option>
-                            <option value="International">International</option>
-                            <option value="Russian">Russian</option>
-                            <option value="Southern">Southern</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="Swedish">Swedish</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option> -->
-                        </select>
-                    </fieldset>
-                
-                    <!-- <fieldset>
-                        <legend>How would you like to sort your restaurants?</legend>
+        <header>
+            <div id="userSelectionPage" class="userSelectionPage">
+
+                <h1>What's for dinner?</h1>
+
+                <p>Too many options? We can help! Select the city you are in, then your favourite type of cuisine and we will give
+                    you some awesome restaurant options in your city.</p>
+
+                <div class="formBackground">
+                    <form id="userSelectionForm">            
+                        <fieldset> <!-- city selection using city_id -->
+                            <legend>Select The City You're In:</legend>
+                            <label for="citySelection" class="visuallyHidden">Select The City You're In</label>
+                            <select id="citySelection" name="citySelection">
+                                <span> class="visibilityHidden">Select The City You're In</span>
+                                
+                                <option readonly>City</option>
+                                <option class="cityChoice" value="89">Toronto</option>
+                                <option class="cityChoice" value="827">Hong Kong</option>
+                                <option class="cityChoice" value="281">Los Angeles</option>
+                                <option class="cityChoice" value="280">New York</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset> <!-- cruisine selection using cuisine_id -->
+                            <legend> Choose Your Ideal Cuisine Here:</legend>
+                            <label for="cuisineSelection" class="visuallyHidden" for="cuisine">Choose Your Ideal Cuisine Here </label>
+                            <select id="cuisineSelection" name="cuisineSelection" >
+                                <span> class="visibilityHidden"> Choose Your Ideal Cuisine Here </span>
+                                
+                                <option readonly>Cuisine Type</option>
+                                <option value="1">American</option>
+                                <option value="3">Asian</option>
+                                <option value="152">African</option>
+                            </select>
+                        </fieldset>
             
-                        <label for="ratingOrCost"></label>
-                        <input id="ratingOrCost" type="checkbox" value="true">
-            
-                        <label for="ascendOrDescend"></label>
-                        <input id="ascendOrDescend" type="checkbox" value="true">
-                    </fieldset> -->
-                
-                    <label for="submit"></label>
-                    <input id="submit" type="submit" value="Find My Restaurant!">
-                </form>
+                        <label for="submit" class="visuallyHidden">Submit form to generate restaurants</label>
+                        <input id="submit" type="submit" value="Find My Restaurant!">
+                    </form>
+                </div>
             </div>
-        </div>
+        </header>
+        
+        <main>
+            <div id="restaurantDisplay" class="restaurantDisplay">
+                <!-- where ajax call results are displayed -->
+            </div>
 
-
-        <div id="restaurantDisplay" class="restaurantDisplay">
-            <!-- where ajax call results are displayed -->
-            <!-- <div class="reset-button">
+            <div class="resetButton">
                 <button id="reset" class="reset" aria-label="Press to reset game.">
                     <p>Reset</p>
                 </button>
-            </div> -->
-        </div>
-    </div>
-
-    <div class="resetButton">
-        <button id="reset" class="reset" aria-label="Press to reset game.">
-            <p>Reset</p>
-        </button>
+            </div>
+        </main>
+        
+        <footer>
+            <!-- to be worked on -->
+        </footer>
+        
     </div>
 
 
