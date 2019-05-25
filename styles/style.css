@@ -191,7 +191,7 @@ img {
 
 /*backgoround image styles */
 .userSelectionPage {
-  width: 100%;
+  min-width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -257,8 +257,7 @@ input, select {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  height: 100vh; }
+  flex-wrap: wrap; }
   .restaurantDisplay div {
     margin: 1px;
     width: 40%;
@@ -269,7 +268,7 @@ input, select {
       max-width: 100%; }
 
 .reset {
-  display: none; }
+  display: block; }
 
 .restaurantDisplay {
   text-align: center; }
@@ -286,3 +285,6 @@ h2,
 h3 {
   font-family: cursive;
   font-size: 30px; }
+
+.resetButton {
+  display: none; }

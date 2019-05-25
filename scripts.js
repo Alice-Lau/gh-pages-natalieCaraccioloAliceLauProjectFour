@@ -41,10 +41,9 @@ restaurantApp.ajaxRequest = function (entityId, cuisinesId) {
         type: "GET",
         dataType: "JSON",
         data: {
-            // sort: 'rating',
-            // order: 'desc',
-            entity_id: entityId,
-            cuisines: cuisinesId
+            cuisines: cuisinesId,
+            entity_id: entityId
+            
 
         },
         beforeSend: function (xhr) {
@@ -115,20 +114,45 @@ restaurantApp.displayAjaxResult = function(result) {
                 </div>
             </div>
         `)
+
+      $('.resetButton').css('display', 'block') 
+            
+        
     }
 
-    $restaurantDisplay.append(`
-        <div id="resetButton" class="resetButton">
-            <button aria-label="Press to reset game.">
-                <p>Reset</p>
-            </button>
-        </div>
-    `)
+
+    // $('.resetButton').on('click', function() {
+
+    //     $restaurantDisplay.empty();
+       
+    //     $('form').reset();
+
+
+    // }) 
+
+    
+
+    // $restaurantDisplay.append(`
+    //     <div id="resetButton" class="resetButton">
+    //         <button aria-label="Press to reset game.">
+    //             <p>Reset</p>
+    //         </button>
+    //     </div>
+    // `)
 }
 
-$('.resetButton').on('click', function() {
-    console.log('button working');
-})
+   $('#reset').on('click', function() {
+
+        $restaurantDisplay.empty();
+       
+        $('#form').trigger('reset');
+
+        $('.resetButton').css('display', 'none');
+
+
+    }) 
+
+
 
 //doc ready
 $('document').ready(function() {

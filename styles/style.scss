@@ -69,8 +69,8 @@ img {
 /*backgoround image styles */
 
 .userSelectionPage {
-    width: 100%;
-    min-height: 100vh;
+    min-width: 100%;
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,7 +136,6 @@ input, select {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    height: 100vh;
 
     div {
         margin: 1px;
@@ -153,7 +152,7 @@ input, select {
 }
 
 .reset {
-    display: none;
+    display: block;
 }
 
 .restaurantDisplay {
@@ -177,3 +176,6 @@ h3 {
     font-size: 30px;
 }
 
+.resetButton {
+    display: none;
+}
