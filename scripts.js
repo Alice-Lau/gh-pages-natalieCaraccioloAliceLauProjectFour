@@ -7,6 +7,9 @@ const $form = $('#form');
 const $userSelectionPage = $('.userSelectionPage');
 const $restaurantDisplay = $('#restaurantDisplay');
 
+const $citySelection = $('#citySelection');
+const $cuisineSelection = $('#cuisine');
+
 const resultArray = [];
 
 // $restaurantDisplay.empty();
@@ -15,8 +18,6 @@ $form.on('submit', function(e) {
     e.preventDefault();
 
     restaurantApp.getInput();
-
-   
 });
 
 restaurantApp.getInput = function() {
@@ -83,7 +84,7 @@ restaurantApp.displayAjaxResult = function(result) {
     }, 1000);
 
     for (item of result) {
-        console.log (item);
+        // console.log (item);
 
         const { cuisines, featured_image, location, name, price_range, url, user_rating} = item;
 
@@ -109,25 +110,25 @@ restaurantApp.displayAjaxResult = function(result) {
                     </div>
                 </div>
 
-                <h3>Address</h3>
-                <p>${address}</p>
-
-                <div className="moreInfoLink">
+                <div class="moreInfoLink">
                     <a href="${url}">more info</a>
                 </div>
             </div>
         `)
-
-        $reset
     }
+
+    $restaurantDisplay.append(`
+        <div id="resetButton" class="resetButton">
+            <button aria-label="Press to reset game.">
+                <p>Reset</p>
+            </button>
+        </div>
+    `)
 }
 
-
-
-
-
-
-
+$('.resetButton').on('click', function() {
+    console.log('button working');
+})
 
 //doc ready
 $('document').ready(function() {
