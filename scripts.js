@@ -16,9 +16,7 @@ $form.on('submit', function(e) {
 
     restaurantApp.getInput();
 
-    $('html, body').animate({
-        scrollTop: $("#restaurantDisplay").offset().top
-    }, 1000);
+   
 });
 
 restaurantApp.getInput = function() {
@@ -80,6 +78,10 @@ restaurantApp.filterResult = function (ajaxResult) {
 }
 
 restaurantApp.displayAjaxResult = function(result) {
+    $('html, body').animate({
+        scrollTop: $("#restaurantDisplay").offset().top
+    }, 1000);
+
     for (item of result) {
         console.log (item);
 

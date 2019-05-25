@@ -258,7 +258,7 @@ input, select {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background: #e4decd; }
+  height: 100vh; }
   .restaurantDisplay div {
     margin: 1px;
     width: 40%;
@@ -272,9 +272,7 @@ input, select {
   display: none; }
 
 .restaurantDisplay {
-  text-align: center;
-  background: url("../assets/background.jpg");
-  background-repeat: repeat; }
+  text-align: center; }
 
 a {
   text-decoration: none;

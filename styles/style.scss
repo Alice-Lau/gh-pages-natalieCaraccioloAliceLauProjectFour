@@ -40,7 +40,6 @@ p {
 h1 {
     font-family: $main, sans-serif;
     text-transform: lowercase;
-    // color: $accent;
     text-align: center;
     font-size: 125px;
     padding-bottom: 30px;
@@ -50,8 +49,6 @@ h1 {
 p {
     font-size: 25px;
     padding-bottom: 30px;
-    // color: $accent;
-
 }
 
 p,
@@ -96,9 +93,7 @@ img {
 
 .formBackground {
     width: 80%;
-    // min-height: 200px;
-    // background: navy;
-    // border-radius: 20px;
+   
 }
 
 /* form styles */
@@ -117,8 +112,6 @@ fieldset {
     margin: 15px 0;
     padding: 5px;
 }
-
-
 
 input, select {
     width: 100%;
@@ -143,7 +136,7 @@ input, select {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background: $tanBlonde;
+    height: 100vh;
 
     div {
         margin: 1px;
@@ -156,7 +149,6 @@ input, select {
         max-width: 100%;
     }
 
-
     }
 }
 
@@ -166,8 +158,8 @@ input, select {
 
 .restaurantDisplay {
     text-align: center;
-    background: url('../assets/background.jpg');
-    background-repeat: repeat;
+    // background: url('../assets/background.jpg');
+    
 }
 
 a {
