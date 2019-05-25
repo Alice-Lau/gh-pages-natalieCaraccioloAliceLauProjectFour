@@ -141,7 +141,7 @@ input, select {
         margin: 1px;
         width: 40%;
         background: white;
-        margin: 0 auto;
+        margin: 10px auto;
 
         img {
         width: 100%;
@@ -153,12 +153,17 @@ input, select {
 
 .reset {
     display: block;
+    border: none;
+    width: 80%;
+    margin:0 auto;
+
 }
 
 .restaurantDisplay {
     text-align: center;
-    // background: url('../assets/background.jpg');
-    
+    padding-top:30px;
+   background-image: linear-gradient(to top, #c1a87d, #cfbb98, #decfb5, #ece3d1, #fbf7ef);
+  
 }
 
 a {
@@ -178,4 +183,31 @@ h3 {
 
 .resetButton {
     display: none;
+    padding: 5px;
 }
+
+.restaurantDisplay img {
+    opacity: 0.8;
+}
+
+button {
+    width: 80%;
+    border-radius: 20px;
+    background: #000;
+    margin: 0 auto;
+
+
+    p {
+        padding-bottom: 0;
+        color: white;
+    }
+}
+
+
+
+
+
+
+/* RESPONSIVE */
+
+

@@ -262,16 +262,24 @@ input, select {
     margin: 1px;
     width: 40%;
     background: white;
-    margin: 0 auto; }
+    margin: 10px auto; }
     .restaurantDisplay div img {
       width: 100%;
       max-width: 100%; }
 
 .reset {
-  display: block; }
+  display: block;
+  border: none;
+  width: 80%;
+  margin: 0 auto; }
 
 .restaurantDisplay {
-  text-align: center; }
+  text-align: center;
+  padding-top: 30px;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#c1a87d), color-stop(#cfbb98), color-stop(#decfb5), color-stop(#ece3d1), to(#fbf7ef));
+  background-image: -webkit-linear-gradient(bottom, #c1a87d, #cfbb98, #decfb5, #ece3d1, #fbf7ef);
+  background-image: -o-linear-gradient(bottom, #c1a87d, #cfbb98, #decfb5, #ece3d1, #fbf7ef);
+  background-image: linear-gradient(to top, #c1a87d, #cfbb98, #decfb5, #ece3d1, #fbf7ef); }
 
 a {
   text-decoration: none;
@@ -287,4 +295,19 @@ h3 {
   font-size: 30px; }
 
 .resetButton {
-  display: none; }
+  display: none;
+  padding: 5px; }
+
+.restaurantDisplay img {
+  opacity: 0.8; }
+
+button {
+  width: 80%;
+  border-radius: 20px;
+  background: #000;
+  margin: 0 auto; }
+  button p {
+    padding-bottom: 0;
+    color: white; }
+
+/* RESPONSIVE */

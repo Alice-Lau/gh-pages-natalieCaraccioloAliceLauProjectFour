@@ -16,6 +16,7 @@ const resultArray = [];
 
 $form.on('submit', function(e) {
     e.preventDefault();
+    $restaurantDisplay.empty();
 
     restaurantApp.getInput();
 });
