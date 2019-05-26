@@ -198,6 +198,17 @@ img {
   max-width: 100%;
   width: 100%; }
 
+select:focus,
+select:hover,
+input:focus,
+input:hover,
+button:focus,
+button:hover,
+a:focus,
+a:hover {
+  -webkit-box-shadow: 0 0 10px #1d1d1d;
+  box-shadow: 0 0 10px #1d1d1d; }
+
 h1 {
   font-family: "pinyon script", sans-serif;
   font-size: 5.58rem;

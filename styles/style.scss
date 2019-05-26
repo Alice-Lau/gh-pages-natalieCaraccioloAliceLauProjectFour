@@ -81,6 +81,17 @@ img {
     width: 100%
 }
 
+select:focus,
+select:hover,
+input:focus,
+input:hover,
+button:focus,
+button:hover,
+a:focus,
+a:hover {
+    box-shadow: 0 0 10px #1d1d1d;
+}
+
 // ==========================================================//
 //                           header                          //
 // ==========================================================//
