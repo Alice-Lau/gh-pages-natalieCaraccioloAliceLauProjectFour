@@ -98,17 +98,9 @@ restaurantApp.filterData = function(rawDataObj) {
 }
 
 restaurantApp.displayAjaxResult = function(restaurant) {
-    $main.css('display', 'block');
-    // we only call the smooth scroll to happen after the ajax call collected all data to avoid lurching movement on DOM
-    $('html, body').animate({
-        scrollTop: $("#restaurantDisplay").offset().top
-    }, 2000); 
-
     const { categories, image_url, name, price, rating, url  } = restaurant;
 
     let aliasList = []
-
-    const cuisineType = `${aliasList.toString()}`;
 
     for (obj of categories) {
         const alias = obj.alias
@@ -122,6 +114,7 @@ restaurantApp.displayAjaxResult = function(restaurant) {
 
             <h3>Cuisine Type</h3>
             <p>${aliasList.toString()}</p>
+            
 
             <div class='ratingStat'>
                 <div class='userRating'>
@@ -140,7 +133,12 @@ restaurantApp.displayAjaxResult = function(restaurant) {
         </div>
     `)
 
-    $reset.css('display', 'block');
+    $main.css('display', 'block');
+
+    // we only call the smooth scroll to happen after the ajax call collected all data to avoid lurching movement on DOM
+    $('html').animate({
+        scrollTop: $restaurantDisplay.offset().top
+    }, 1000)
 }
 
 restaurantApp.resetInput = function() {

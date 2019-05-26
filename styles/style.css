@@ -119,14 +119,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: '';
-  clear: both;
-  height: 0; }
-
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -188,11 +180,13 @@ h2,
 h3 {
   font-size: 1.34rem; }
 
-p,
 form,
-legend,
-a {
+legend {
   font-size: 1.12rem; }
+
+p,
+a {
+  font-size: 1rem; }
 
 img {
   max-width: 100%;
@@ -301,7 +295,6 @@ a {
   padding: 0 20px; }
 
 .resetButton {
-  display: none;
   padding: 5px;
   text-align: center; }
 

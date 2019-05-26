@@ -57,11 +57,14 @@ h3 {
     font-size: 1.34rem;
 }
 
-p,
 form,
-legend,
-a {
+legend {
     font-size: 1.12rem;
+}
+
+p,
+a {
+    font-size: 1rem;
 }
 
 img {
@@ -170,7 +173,6 @@ a {
 }
 
 .resetButton {
-    display: none;
     padding: 5px;
     text-align: center;
 }
@@ -191,16 +193,13 @@ a {
 // ==========================================================//
 //                            footer                         //
 // ==========================================================//
-footer {
-
-    p {
+footer p {
         padding-bottom: 0;
-    }
 }
 
-
-
-
+// ==========================================================//
+//                        media Query                        //
+// ==========================================================//
 @media (max-width: 760px) {
     .restaurantDisplay {
         display:flex;
