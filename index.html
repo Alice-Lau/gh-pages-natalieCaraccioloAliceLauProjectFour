@@ -24,30 +24,42 @@
 
                 <div class="formBackground">
                     <form id="userSelectionForm">            
-                        <fieldset> <!-- city selection using city_id -->
-                            <legend>Select The City You're In:</legend>
-                            <label for="citySelection" class="visuallyHidden">Select The City You're In</label>
-                            <select id="citySelection" name="citySelection">
-                                <span> class="visibilityHidden">Select The City You're In</span>
-                                
-                                <option readonly>City</option>
-                                <option class="cityChoice" value="89">Toronto</option>
-                                <option class="cityChoice" value="827">Hong Kong</option>
-                                <option class="cityChoice" value="281">Los Angeles</option>
-                                <option class="cityChoice" value="280">New York</option>
-                            </select>
+                        <fieldset>
+                            <!-- city selection using city_id -->
+                            <legend>Please Enter The City You're In:</legend>
+                            <label for="citySelection" class="visuallyHidden">Type in the city you are in.</label>
+                            <input id="citySelection" type="text" name="citySelection" placeholder="e.g. - Toronto">
                         </fieldset>
-
-                        <fieldset> <!-- cruisine selection using cuisine_id -->
+                        
+                        <fieldset>
+                            <!-- cruisine selection using cuisine_id -->
                             <legend> Choose Your Ideal Cuisine Here:</legend>
                             <label for="cuisineSelection" class="visuallyHidden" for="cuisine">Choose Your Ideal Cuisine Here </label>
-                            <select id="cuisineSelection" name="cuisineSelection" >
+                            <select id="cuisineSelection" name="cuisineSelection">
                                 <span> class="visibilityHidden"> Choose Your Ideal Cuisine Here </span>
-                                
+                        
                                 <option readonly>Cuisine Type</option>
-                                <option value="1">American</option>
-                                <option value="3">Asian</option>
-                                <option value="152">African</option>
+                                <option value="tradamerican">American</option>
+                                <option value="asianfusion">Asian Fusion</option>
+                                <option value="french">French</option>
+                                <option value="foodstands">Foodstands</option>
+                                <option value="greek">Greek</option>
+                                <option value="indpak">Indian</option>
+                                <option value="irish">Irish</option>
+                                <option value="italian">Italian</option>
+                                <option value="japanese">Japanese</option>
+                                <option value="korean">Korean</option>
+                                <option value="latin">Latin American</option>
+                                <option value="mexican">Mexican</option>
+                                <option value="pakistani">Pakistani</option>
+                                <option value="persian">Persian</option>
+                                <option value="russian">Russian</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="thai">Thai</option>
+                                <option value="turkish">Turkish</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vietnamese">Vietnamese</option>
                             </select>
                         </fieldset>
             

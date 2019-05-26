@@ -239,6 +239,18 @@ h1 {
 form {
   padding: 20px 0; }
 
+input[type=text]::-webkit-input-placeholder {
+  opacity: 1; }
+
+input[type=text]:-ms-input-placeholder {
+  opacity: 1; }
+
+input[type=text]::-ms-input-placeholder {
+  opacity: 1; }
+
+input[type=text]::placeholder {
+  opacity: 1; }
+
 input,
 select,
 fieldset {
@@ -248,6 +260,7 @@ fieldset {
   border: none;
   text-align: center; }
 
+input,
 select {
   background: transparent;
   border-bottom: 2px solid black; }
@@ -275,6 +288,12 @@ main {
   background: rgba(253, 253, 253, 0.8);
   border-radius: 30px;
   text-align: center; }
+  .singleRestaurant img {
+    max-height: 300px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center; }
 
 a {
   text-decoration: none;
