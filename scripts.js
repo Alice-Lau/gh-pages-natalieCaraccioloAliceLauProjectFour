@@ -1,6 +1,7 @@
 // namespacing object
 const restaurantApp = {}
 
+//cache of DOM elements
 const $userSelectionPage = $('.userSelectionPage');
 const $form = $('#userSelectionForm');
 const $selectedCity = $('#citySelection');
@@ -8,145 +9,151 @@ const $selectedCuisine = $('#cuisineSelection');
 const $submit = $('#submit');
 const $main = $('main');
 const $restaurantDisplay = $('#restaurantDisplay');
+const $reset = $('.resetButton');
+const $resetButton = $('#reset')
 
+// init function
+restaurantApp.init = function () {
 
-const resultArray = [];
+    restaurantApp.userInput();
 
-// form submission listener
-$form.on('submit', function(e) {
-    e.preventDefault();
-    
-    $restaurantDisplay.empty();
-
-    resultArray.length = 0;
-
-    restaurantApp.getInput();
-});
-
-// storing the user inputs into variable, checking the inputs are valid, then pass to ajax request function
-restaurantApp.getInput = function() {
-    const entityId = parseInt($selectedCity.val());
-
-    const cuisineId = parseInt($selectedCuisine.val());
-
-    if(entityId !== entityId || cuisineId !== cuisineId) {
-        alert('Please complete your choice inputs');
-    } else {
-        restaurantApp.ajaxRequest(entityId, cuisineId);
-    }
+    restaurantApp.resetInput();
 }
 
-// ajax call to zomato
-// !!! although the api stated to accept multiple parameter, we found that it only return data based on the last parameter provided !!!
-restaurantApp.ajaxRequest = function (entityId, cuisinesId) {
-    $.ajax({
-        url: "https://developers.zomato.com/api/v2.1/search?",
-        type: "GET",
-        dataType: "JSON",
-        data: {
-            cuisines: cuisinesId,
-            entity_id: entityId
-        },
-        // the api key has to be passed as a header, this solution was provided by Colin, whom we are really thankful to :)
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("user-key", "b7d63a85e5a9127cf51fb71ccf4c92e6");
-        },
-        // when ajax call is successful, we pass the result to the filterResult function
-        success: function (ajaxResult) {
-            $restaurantDisplay.empty();
-            restaurantApp.filterResult(ajaxResult);
-        },
-        error: function () {
-            $restaurantDisplay.html(`
-                < h2 >There seems to be an error in your input.Please re-enter your input.</h2>
-            `)
-        }
+// form submission listener
+restaurantApp.userInput =function() {
+    $form.on('submit', function (e) {
+        e.preventDefault();
+
+        $restaurantDisplay.empty();
+
+        restaurantApp.getInput();
     });
 }
 
-// the main purpose of this function is to filter out result without feature image of the restaurant. Also to restrict the total return to 12 items.
-// although the api provide a choice to restrict the number of results return, there is not parameter to assure every return will have image
-// so to ensure that all our returned data has image and that there're always 12 results to be displayed. This function was created.
-restaurantApp.filterResult = function (ajaxResult) {
+// storing the user inputs into variable, checking the inputs are valid, then pass to ajax request function
+restaurantApp.getInput = function() {
+    const citySelection = $selectedCity.val();
 
-    const restaurantArray = ajaxResult.restaurants;
+    const cuisineSelection = $selectedCuisine.val();
 
-    for (restaurantObj of restaurantArray) {
-        const restaurant = restaurantObj.restaurant;
-        const image = restaurant.featured_image;
-
-        if (image && resultArray.length < 12) {
-            resultArray.push(restaurant);
-        }
+    if(!citySelection || !cuisineSelection) {
+        alert('Please complete your choice inputs');
+    } else {
+        restaurantApp.ajaxRequest(citySelection, cuisineSelection);
     }
-
-    restaurantApp.displayAjaxResult(resultArray);
 }
 
-// after a list of filtered results with 12 items is completed, the following function display the data onto the DOM
-restaurantApp.displayAjaxResult = function(result) {
+// ajax call to Yelp
+// Originally this app uses Zomato as API database. However, we found that the API was not realiable in returning data that was requested !!! although the api stated to accept multiple parameter, we found that it only return data based on the last parameter provided !!! Same results seemed to return when different city_id were used either alone or with other parameters.
+//credit to Colin for making the Zomato API usable by properly inserting the header
+//credit Ilan P from stack overflow providing solution to overcome CORS issue for Yelp API
+restaurantApp.ajaxRequest = function (city, cuisineType) {
+    const ajaxQueryUrl = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
+
+    const apiKey = '8hsNMQbj8H48W6rZ6bgIwQ4suDRZ2rygbNir5WOf6dQ_d5O0OR-rz49Zhckl_vuKvn4IzCd5ZRGz34M-vCEy2gQx4cOQTn9LRwjcvaEt9BDGF3PrvVl9ZHdtIsTlXHYx';
+
+    $.ajax({
+        url: ajaxQueryUrl,
+        method: "GET",
+        dataType: 'JSON',
+        data: {
+            location: city,
+            categories: cuisineType,
+            limit: 10
+        },
+        //this part is different from ajax method learnt in class
+        //api key is stored in the header, instead of in a query parameter
+        headers: {
+            "accept": "application/json",
+            "x-requested-with": "xmlhttprequest",
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": `Bearer ${apiKey}`
+        }
+    })
+    .then(function(data) {
+        restaurantApp.filterData(data);
+    })
+    .fail(function () {
+        $form.trigger('reset');
+        alert('please refine your input. Thank you');
+    })
+}
+
+restaurantApp.filterData = function(rawDataObj) {
+    // access the array within the object returned from initial ajax call
+    const businessList = rawDataObj.businesses;
+
+    // if there're fewer than 10 results, we advice the user to revise their choices
+    if (businessList.length < 10) {
+        $form.trigger('reset');
+
+        alert(`Unfortunately, there're not enough data on your selections, please choose another city or cuisine type.`);
+    // if there're more than 10 results, information is passed to the display function
+    } else {
+        businessList.forEach(function(restaurantInfo) {
+            restaurantApp.displayAjaxResult(restaurantInfo);
+        });
+    }
+}
+
+restaurantApp.displayAjaxResult = function(restaurant) {
     $main.css('display', 'block');
-    // we only call the smooth scroll to happen after the ajax call collected all 12 items of data
+    // we only call the smooth scroll to happen after the ajax call collected all data to avoid lurching movement on DOM
     $('html, body').animate({
         scrollTop: $("#restaurantDisplay").offset().top
-    }, 1000);
+    }, 1000);    
 
-    for (item of result) {
+    const { categories, image_url, name, price, rating, url  } = restaurant;
 
-        const { cuisines, featured_image, location, name, price_range, url, user_rating} = item;
+    let aliasList = []
 
-        const rating = user_rating.aggregate_rating;
-        const address = location.address
+    const cuisineType = `${aliasList.toString()}`;
 
-        $restaurantDisplay.append(`
-            <div class='singleRestaurant'>
-                <h2>${name}</h2>
-                <img src='${featured_image}' alt='A featured image of ${name}'/>
-
-                <h3>Cuisine Type</h3>
-                <p>${cuisines}</p>
-
-                <div class='ratingStat'>
-                    <div class='userRating'>
-                        <h3>Rating</h3>
-                        <p>${rating}/5</p>
-                    </div>
-                    <div class='priceRange'>
-                        <h3>Price</h3>
-                        <p>${price_range}/5</p>
-                    </div>
-                </div>
-
-                <div class="moreInfoLink">
-                    <a href="${url}">more info</a>
-                </div>
-            </div>
-        `)
+    for (obj of categories) {
+        const alias = obj.alias
+        aliasList.push(alias);
     }
 
-    $('.resetButton').css('display', 'block')
+    $restaurantDisplay.append(`
+        <div class='singleRestaurant'>
+            <h2>${name}</h2>
+            <img src='${image_url}' alt='A featured image of the restaurant "${name}"'/>
 
+            <h3>Cuisine Type</h3>
+            <p>${aliasList.toString()}</p>
+
+            <div class='ratingStat'>
+                <div class='userRating'>
+                    <h3>Rating</h3>
+                    <p>${rating}/5</p>
+                </div>
+                <div class='priceRange'>
+                    <h3>Price</h3>
+                    <p>${price}</p>
+                </div>
+            </div>
+
+            <div class="moreInfoLink">
+                <a href="${url}">more info</a>
+            </div>
+        </div>
+    `)
+
+    $reset.css('display', 'block');
 }
 
-$('#reset').on('click', function() {
-
+restaurantApp.resetInput = function() {
+    $resetButton.on('click', function () {
         $restaurantDisplay.empty();
+
         $main.css('display', 'none');
 
-        $('#form').trigger('reset');
-
-        // $('.resetButton').css('display', 'none');
-
-})
-
-restaurantApp.init = function() {
-    
+        $form.trigger('reset');
+    })
 }
 
 //doc ready
 $('document').ready(function() {
-
-
-
-
+    restaurantApp.init();
 });

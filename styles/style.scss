@@ -110,6 +110,10 @@ form {
     padding: 20px 0;
 }
 
+input[type=text]::placeholder {
+    opacity: 1;
+}
+
 input, 
 select, 
 fieldset {
@@ -120,6 +124,7 @@ fieldset {
     text-align: center;
 }
 
+input,
 select {
     background: transparent;
     border-bottom: 2px solid black;
@@ -151,7 +156,13 @@ main {
         background: rgba(253, 253, 253, 0.8);
         border-radius: 30px;    
         text-align: center;    
-    }
+
+        img {
+            max-height: 300px;
+            object-fit: cover;
+            object-position: center;
+        }
+}
 
 a {
     text-decoration: none;
