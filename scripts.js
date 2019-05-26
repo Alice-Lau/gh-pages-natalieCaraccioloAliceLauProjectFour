@@ -102,7 +102,7 @@ restaurantApp.displayAjaxResult = function(restaurant) {
     // we only call the smooth scroll to happen after the ajax call collected all data to avoid lurching movement on DOM
     $('html, body').animate({
         scrollTop: $("#restaurantDisplay").offset().top
-    }, 1000);    
+    }, 2000); 
 
     const { categories, image_url, name, price, rating, url  } = restaurant;
 
