@@ -1,63 +1,79 @@
-@import './partials/setup';
-
-/* colors */
-$tanBlonde: #e4decd;
-$accent:  navy;
+@import 'setup';
 
 
 /* fonts */
-
 $main: 'pinyon script';
 $body: 'montserrat';
 
-
+// ==========================================================//
+//                          general                          //
+// ==========================================================//
 html {
+    // 1rem = 22.4px
     font-size: 140%;
+    background: #f8d9b1;
     
 }
 
 .wrapper {
     max-width: 1440px;
+    margin: 0 auto;
+    background-image:
+        linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(248, 217, 177, 0.5)),
+        url('../assets/background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-/* main font sizing and styles */
-
-
-h2 {
-    font-family: $main, sans-serif;
-}
+// .userSelectionPage:after {
+//     content: "";
+//     background: url('../assets/background.jpg');
+//     opacity: 0.5;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     position: absolute;
+//     z-index: -1;   
+// }
 
 h1,
 h2,
 h3,
-p {
-    text-align: center;
-    margin: 0 auto;
+p,
+form,
+legend {
     width: 80%;
-
-}
-
-h1 {
-    font-family: $main, sans-serif;
-    text-transform: lowercase;
+    margin: 0 auto;
     text-align: center;
-    font-size: 125px;
-    padding-bottom: 30px;
-    font-weight: 200;
 }
 
+h1,
 p {
-    font-size: 25px;
     padding-bottom: 30px;
+}
+
+h2,
+h3 ,
+p,
+form,
+legend,
+a {
+    font-family: $body, sans-serif;
+    color: #1d1d1d;
+}
+
+h2,
+h3 {
+    font-size: 1.34rem;
 }
 
 p,
 form,
-legend {
-    font-family: $body;
-    margin: 0 auto;
-    color: black;
-    font-size: 25px;
+legend,
+a {
+    font-size: 1.12rem;
 }
 
 img {
@@ -65,142 +81,114 @@ img {
     width: 100%
 }
 
-/*backgoround image styles */
+// ==========================================================//
+//                           header                          //
+// ==========================================================//
+h1 {
+    font-family: $main, sans-serif;
+    font-size: 5.58rem;
+    font-weight: 200;
+    text-transform: lowercase;
+}
 
 .userSelectionPage {
-    min-width: 100%;
-    min-height: 100vh; 
+    width: 100%;
+    min-height: 95vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-
-}
-
-.userSelectionPage:after {
-    content: "";
-    background: url('../assets/background.jpg');
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;   
+    // position: relative;
 }
 
 .formBackground {
+    background: rgba(255,255,255,0.3);
     width: 80%;
+    border-radius: 30px;
 }
 
-/* form styles */
-
-form {
-    margin: 0 auto;
-    width: 80%;  
+form { 
     padding: 20px 0;
-    color: white;
 }
 
-.input, 
+input, 
 select, 
 fieldset {
-    border: none;
+    width: 100%;
     margin: 15px 0;
     padding: 5px;
-}
-
-input, select {
-    width: 100%;
-    text-align: center;
-    border-bottom: 2px solid black;
-    background: none;
-}
-
-#submit {
-    border-radius: 30px;
     border: none;
-    padding: 5px;
-    color: white;
-    background: black;
-    
+    text-align: center;
 }
 
-/* result page styles  */
+select {
+    background: transparent;
+    border-bottom: 2px solid black;
+}
+
+.submit {
+    background: #1d1d1d;
+    border-radius: 30px;
+    color: #fdfdfd;
+}
+
+// ==========================================================//
+//                     main restaurant display               //
+// ==========================================================//
+main {
+    display: none;
+}
 
 .restaurantDisplay {
-    margin: 0 auto;
+    margin: 30px auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+}
 
-    div {
-        margin: 1px;
+.singleRestaurant {
+        margin: 10px auto;    
         width: 40%;
-        background: white;
-        margin: 10px auto;
-
-        img {
-        width: 100%;
-        max-width: 100%;
+        background: rgba(253, 253, 253, 0.8);
+        border-radius: 30px;    
+        text-align: center;    
     }
-
-    }
-}
-
-.reset {
-    display: block;
-    border: none;
-    width: 80%;
-    margin:0 auto;
-
-}
-
-.restaurantDisplay {
-    text-align: center;
-    padding-top:30px;
-    background-image: linear-gradient(to top, #e9cd9b, #edd8b0, #f2e2c4, #f6edda, #fbf7ef);
-
-}
 
 a {
     text-decoration: none;
-    color: black;
-    font-family: $body;
-    font-size: 25px;
-    border: 2px solid black;
+    border: 2px solid #1d1d1d;
     padding: 0 20px;
-}
-
-h2,
-h3 {
-    font-family: cursive;
-    font-size: 30px;
 }
 
 .resetButton {
     display: none;
     padding: 5px;
+    text-align: center;
 }
 
-.restaurantDisplay img {
-    opacity: 0.8;
-}
-
-button {
+.reset {
+    background: #1d1d1d;
     width: 80%;
+    margin:0 auto;
+    border: none;
     border-radius: 20px;
-    background: #000;
-    margin: 0 auto;
-
 
     p {
         padding-bottom: 0;
-        color: white;
+        color: #fdfdfd;
     }
 }
 
+// ==========================================================//
+//                            footer                         //
+// ==========================================================//
+footer {
+    height: 5vh;
+
+    p {
+        padding-bottom: 0;
+    }
+}
 
 
 

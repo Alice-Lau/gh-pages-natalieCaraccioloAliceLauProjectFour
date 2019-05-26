@@ -1,11 +1,12 @@
 // namespacing object
 const restaurantApp = {}
 
+const $userSelectionPage = $('.userSelectionPage');
+const $form = $('#userSelectionForm');
 const $selectedCity = $('#citySelection');
 const $selectedCuisine = $('#cuisineSelection');
 const $submit = $('#submit');
-const $form = $('#userSelectionForm');
-const $userSelectionPage = $('.userSelectionPage');
+const $main = $('main');
 const $restaurantDisplay = $('#restaurantDisplay');
 
 
@@ -16,7 +17,9 @@ $form.on('submit', function(e) {
     e.preventDefault();
     
     $restaurantDisplay.empty();
-    
+
+    resultArray.length = 0;
+
     restaurantApp.getInput();
 });
 
@@ -72,7 +75,7 @@ restaurantApp.filterResult = function (ajaxResult) {
         const restaurant = restaurantObj.restaurant;
         const image = restaurant.featured_image;
 
-        if (image && resultArray.length <= 12) {
+        if (image && resultArray.length < 12) {
             resultArray.push(restaurant);
         }
     }
@@ -82,6 +85,7 @@ restaurantApp.filterResult = function (ajaxResult) {
 
 // after a list of filtered results with 12 items is completed, the following function display the data onto the DOM
 restaurantApp.displayAjaxResult = function(result) {
+    $main.css('display', 'block');
     // we only call the smooth scroll to happen after the ajax call collected all 12 items of data
     $('html, body').animate({
         scrollTop: $("#restaurantDisplay").offset().top
@@ -127,10 +131,11 @@ restaurantApp.displayAjaxResult = function(result) {
 $('#reset').on('click', function() {
 
         $restaurantDisplay.empty();
+        $main.css('display', 'none');
 
         $('#form').trigger('reset');
 
-        $('.resetButton').css('display', 'none');
+        // $('.resetButton').css('display', 'none');
 
 })
 
