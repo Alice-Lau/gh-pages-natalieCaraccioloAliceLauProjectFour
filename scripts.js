@@ -135,10 +135,10 @@ restaurantApp.displayAjaxResult = function(restaurant) {
 
     $main.css('display', 'block');
 
-    // we only call the smooth scroll to happen after the ajax call collected all data to avoid lurching movement on DOM
-    $('html').animate({
-        scrollTop: $restaurantDisplay.offset().top
-    }, 1000)
+    // there seems to be a glitch where page sticks to one spot after scrolling. We will work on the glitch later on
+    // $('html').animate({
+    //     scrollTop: $restaurantDisplay.offset().top
+    // }, 1000)
 }
 
 restaurantApp.resetInput = function() {
