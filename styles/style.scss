@@ -12,14 +12,15 @@ html {
     // 1rem = 22.4px
     font-size: 140%;
     background: #f8d9b1;
-    
+    // scroll-behavior: smooth;
 }
 
 .wrapper {
-    max-width: 1440px;
+    max-width: 3840px;
+    width: 100%;
     margin: 0 auto;
     background-image:
-        linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(248, 217, 177, 0.5)),
+        linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255, 255, 255, 0.4)),
         url('../assets/background.jpg');
     background-attachment: fixed;
     background-size: cover;
@@ -156,7 +157,8 @@ main {
         margin: 10px auto;    
         width: 40%;
         background: rgba(253, 253, 253, 0.8);
-        border-radius: 30px;    
+        border-radius: 30px; 
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         text-align: center;    
 
         img {

@@ -135,10 +135,9 @@ restaurantApp.displayAjaxResult = function(restaurant) {
 
     $main.css('display', 'block');
 
-    // there seems to be a glitch where page sticks to one spot after scrolling. We will work on the glitch later on
-    // $('html').animate({
-    //     scrollTop: $restaurantDisplay.offset().top
-    // }, 1000)
+    $('html').animate({
+        scrollTop: $restaurantDisplay.offset().top
+    }, 50, 'linear')
 }
 
 restaurantApp.resetInput = function() {
